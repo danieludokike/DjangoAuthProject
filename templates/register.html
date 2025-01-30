@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <ul>
+            <li><a href="{% url 'authapp:login' %}">Login</a></li>
+            <li><a href="{% url 'authapp:register' %}">Register</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+        <h1>Register an account</h1>
+        <form method="POST" action="{% url 'authapp:register' %}">
+            {% csrf_token %}
+            {% if messages %}
+            {% for msg in messages %}
+                <div>{{msg}}</div>
+            {% endfor %}
+
+        {% endif %}
+            <label>Username</lable>
+            <input type="text" name="username" />
+            <br>
+            <label>Password</lable>
+            <input type="password" name="password" />
+            <br>
+            <label>Confirm Password</lable>
+            <input type="password" name="password2" />
+            <br>
+            <input type="submit" value="Register" />
+        </form>
+    </body>
+</html>
